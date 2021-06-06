@@ -38,6 +38,27 @@ Implement this program as a GUI app that automatically updates the values when a
  */
 public class App {
     public static void main(String[] args) {
-        
+        Scanner in = new Scanner(System.in);
+        System.out.print("What is the principal amount? ");
+        String principal = in.nextLine();
+        System.out.print("What is the rate? ");
+        String rateOfInterest = in.nextLine();
+        System.out.print("What is the number of years? ");
+        String numYears = in.nextLine();
+        System.out.print("What is the number of times the interest is compounded per year? ");
+        String numCompounded = in.nextLine();
+
+        // converting strings to floats
+        float P = Float.parseFloat(principal);
+        float r = Float.parseFloat(rateOfInterest)/100;
+        float t = Float.parseFloat(numYears);
+        float n = Float.parseFloat(numCompounded);
+
+        // calculations for compound interest
+        float nt = n*t;
+        float A = (float) (Math.pow((1+(r/n)), nt) * P);
+
+        // output
+        System.out.printf("$%.2f invested at %.2f%% for %d years compounded %d times per year is $%.2f.\n", P, r*100, (int)t, (int)n, A);
     }
 }
